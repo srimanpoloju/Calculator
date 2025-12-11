@@ -1,0 +1,159 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+}
+
+.calculator {
+    width: 300px;
+    padding-bottom: 15px;
+    border-radius: 7px;
+    background-color: var(--calc-bg);
+    box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.61);
+}
+
+.display {
+    width: 100%;
+    height: 80px;
+    border: none;
+    color: var(--display-text-color);
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 2rem;
+    background-color: var(--display-bg);
+    text-align: right;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    margin: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.operator {
+    background-color: var(--operator-bg);
+    color: var(--operator-color);
+    font-size: 35px;
+}
+
+/* controls */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+select#theme-select {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+button#creative-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    width: auto;
+    height: auto;
+    font-size: 0.9rem;
+}
+
+/* Theme variables */
+:root {
+    --bg-color: #222831;
+    --calc-bg: #000000;
+    --display-bg: #d9ff00;
+    --display-text-color: #222222;
+    --btn-bg: #222222;
+    --btn-color: #ffffff;
+    --operator-bg: #d9ff00;
+    --operator-color: #000000;
+}
+
+/* Light theme */
+.theme-light {
+    --bg-color: #f2f2f2;
+    --calc-bg: #ffffff;
+    --display-bg: #eeeeee;
+    --display-text-color: #111111;
+    --btn-bg: #dddddd;
+    --btn-color: #111111;
+    --operator-bg: #ffcc00;
+    --operator-color: #111111;
+}
+
+/* Neon theme */
+.theme-neon {
+    --bg-color: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    --calc-bg: #08121a;
+    --display-bg: #00ffd5;
+    --display-text-color: #001f1a;
+    --btn-bg: #0b2a35;
+    --btn-color: #00ffd5;
+    --operator-bg: #ff00d4;
+    --operator-color: #100016;
+}
+
+/* Apply bg gradient when neon; fallback when not supported */
+/* neon theme handled through variables above */
+
+/* Creative mode animations */
+.creative {
+    animation: bodyGradient 10s linear infinite alternate;
+}
+
+@keyframes bodyGradient {
+    0% { background: radial-gradient(circle at 10% 20%, #ff9a9e, transparent 10%), radial-gradient(circle at 80% 80%, #fad0c4, transparent 10%); }
+    25% { background: radial-gradient(circle at 20% 80%, #a18cd1, transparent 10%), radial-gradient(circle at 80% 20%, #fbc2eb, transparent 10%); }
+    50% { background: radial-gradient(circle at 50% 50%, #84fab0, transparent 10%), radial-gradient(circle at 20% 30%, #8fd3f4, transparent 10%); }
+    75% { background: radial-gradient(circle at 80% 20%, #fccb90, transparent 10%), radial-gradient(circle at 20% 80%, #e0c3fc, transparent 10%); }
+    100% { background: radial-gradient(circle at 50% 10%, #f6d365, transparent 10%), radial-gradient(circle at 10% 90%, #f093fb, transparent 10%); }
+}
+
+/* Make operators more playful in creative mode */
+.creative .operator {
+    border-radius: 10px;
+    transform: rotate(-6deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.display {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button, select {
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+button:active {
+    transform: translateY(2px);
+}
